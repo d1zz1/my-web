@@ -2,135 +2,293 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>d1zz7 | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>d1zz7's Cyber Terminal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
-    body { font-family:'Share Tech Mono', monospace; background:linear-gradient(135deg,#0f0f0f,#1a1a1a); color:#00ffea; overflow-x:hidden; }
-    body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background-image:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');opacity:0.05;animation:moveNoise 30s linear infinite;pointer-events:none;z-index:0;}
-    @keyframes moveNoise{0%{background-position:0 0} 100%{background-position:1000px 1000px}}
-    main { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:2; padding:2rem; text-align:center; }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: radial-gradient(circle at top, #222 0%, #000 100%);
+      color: #00ff9f;
+      overflow-x: hidden;
+    }
 
-    .glitch-container { position:relative; font-size:2rem; text-transform:uppercase; margin-bottom:2rem; height:2.5em; }
-    .glitch-text { position:absolute; opacity:0; transition:opacity .8s,transform .8s; left:50%; transform:translateX(-50%) scale(.95); white-space:nowrap; }
-    .glitch-text.active { opacity:1; z-index:1; transform:translateX(-50%) scale(1); animation:glitch 1s infinite; }
-    @keyframes glitch{0%,100%{text-shadow:2px 0 red,-2px 0 blue}50%{text-shadow:-2px 0 red,2px 0 blue}}
+    header, section {
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-    .buttons { display:flex; gap:20px; margin-bottom:3rem; z-index:2; }
-    .btn { background:#00ffea;color:black;padding:.8rem 1.5rem;border:none;border-radius:5px;cursor:pointer;font-family:inherit;text-transform:uppercase;transition:background .3s,transform .2s; }
-    .btn:hover{background:#00c9b5;transform:scale(1.05)}
+    .glitch-banner {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ff9f;
+      position: relative;
+      text-align: center;
+      user-select: none;
+      animation: flicker 3s infinite alternate;
+      text-shadow:
+        0 0 5px #00ff9f,
+        0 0 10px #00ff9f,
+        -2px 0 red,
+        2px 0 blue;
+      margin-bottom: 20px;
+    }
 
-    .notification{position:fixed;top:20px;right:20px;background:#00ffea;color:black;padding:10px 15px;border-radius:5px;font-size:.9rem;font-family:inherit;opacity:0;pointer-events:none;z-index:100; }
-    .notification.show{animation:slideInOut 3s forwards;}
-    @keyframes slideInOut{0%{opacity:0;transform:translateY(-20px)}10%{opacity:1;transform:translateY(0)}90%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-20px)}}
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
 
-    section#projects{padding:4rem 2rem;background:#121212;color:#00ffea;text-align:center;}
-    #projects h2{font-size:2rem;margin-bottom:2rem;animation:glitch 1s infinite;}
-    .project-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1000px;margin:0 auto;}
-    .project{background:#1a1a1a;padding:1rem;border:1px solid #00ffea;border-radius:8px;transition:transform .3s;}
-    .project:hover{transform:scale(1.05)}
-    .project img{width:100%;border-radius:5px;margin-bottom:.5rem;}
-    .project h3{margin:.5rem 0;}
-    .tag{font-size:.8rem;color:#00c9b5;}
+    .btn {
+      background: #000;
+      border: 1px solid #00ff9f;
+      color: #00ff9f;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.3s;
+      user-select: none;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-    section#about{padding:4rem 2rem;background:#0a0a0a;color:#00ffea;text-align:center;position:relative;}
-    #about h2{font-size:2rem;margin-bottom:2rem;animation:glitch 1s infinite;}
-    .about-glitch{font-size:1.2rem;height:1.5em;position:relative;}
-    .about-glitch span{position:absolute;opacity:0;left:50%;transform:translateX(-50%) scale(.95);transition:opacity .5s,transform .5s;white-space:nowrap;}
-    .about-glitch span.active{opacity:1;transform:translateX(-50%) scale(1);animation:glitch .8s infinite;}
+    .btn:hover {
+      background: #00ff9f;
+      color: #000;
+    }
 
+    .copied-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      color: #00ff9f;
+      padding: 10px;
+      border: 1px solid #00ff9f;
+      border-radius: 5px;
+      display: none;
+      user-select: none;
+      font-weight: bold;
+      z-index: 9999;
+    }
+
+    .terminal {
+      background: #000;
+      color: #0f0;
+      padding: 20px;
+      width: 80%;
+      margin: 20px auto;
+      height: 300px;
+      overflow-y: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ff9f44;
+      position: relative;
+      font-size: 16px;
+      line-height: 1.4;
+      user-select: text;
+    }
+
+    input.terminal-input {
+      background: transparent;
+      border: none;
+      color: #0f0;
+      width: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      outline: none;
+      caret-color: #00ff9f;
+      user-select: text;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .project-card, .tool-card {
+      background: #111;
+      border: 1px solid #00ff9f;
+      margin: 10px auto;
+      padding: 15px;
+      width: 80%;
+      border-radius: 10px;
+      color: #00ff9f;
+      user-select: none;
+    }
+
+    nav {
+      width: 80%;
+      margin: 0 auto 40px auto;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      user-select: none;
+    }
+
+    nav button {
+      background: transparent;
+      border: 1px solid #00ff9f;
+      color: #00ff9f;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav button:hover, nav button.active {
+      background: #00ff9f;
+      color: #000;
+    }
   </style>
 </head>
 <body>
-
-<main>
-  <div class="glitch-container">
-    <span class="glitch-text active">d1zz7</span>
-    <span class="glitch-text">system breached</span>
-    <span class="glitch-text">access granted</span>
-    <span class="glitch-text">proxy engaged</span>
-    <span class="glitch-text">decrypting payload</span>
-  </div>
-
-  <div class="buttons">
-    <button class="btn" onclick="copyDiscord()">discord</button>
-    <button class="btn" onclick="openGithub()">github</button>
-    <a href="#projects"><button class="btn">projects</button></a>
-  </div>
-</main>
-
-<div class="notification" id="notification">Discord username copied</div>
-
-<section id="projects">
-  <h2>My Projects</h2>
-  <div class="project-list">
-    <div class="project">
-      <img src="https://i.imgur.com/5Xw3QJH.png" alt="Discord Nuke Bot">
-      <h3>Discord Nuke Bot</h3>
-      <p class="tag">Go / Discord API</p>
+  <header>
+    <h1 class="glitch-banner">| d1zz7 |</h1>
+    <div>
+      <button class="btn" onclick="copyDiscord()">💬 Discord</button>
+      <button class="btn" onclick="window.open('https://github.com/d1zz1', '_blank')">💻 GitHub</button>
     </div>
-    <div class="project">
-      <img src="https://i.imgur.com/0JjJQ9W.jpg" alt="Ethical Hacking Toolkit">
-      <h3>Ethical Hacking Toolkit</h3>
-      <p class="tag">Python / Bash</p>
-    </div>
-    <div class="project">
-      <img src="https://i.imgur.com/9YQwZ3f.png" alt="Network Monitoring Dashboard">
-      <h3>Network Monitoring Dashboard</h3>
-      <p class="tag">React / Grafana</p>
-    </div>
-    <div class="project">
-      <img src="https://i.imgur.com/placeholder.png" alt="Glitch UI Design">
-      <h3>Glitch UI Design</h3>
-      <p class="tag">HTML / CSS / JS</p>
-    </div>
-  </div>
-</section>
+    <div class="copied-notification" id="copied-notification">Discord username copied!</div>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about-glitch">
-    <span class="active">Hello</span>
-    <span>i'm d1zz7</span>
-    <span>My talents:</span>
-    <span>programming</span>
-    <span>ethical hacking</span>
-    <span>penetration tester</span>
-    <span>network administrator</span>
-    <span>Pc scientist</span>
-  </div>
-</section>
+  <nav>
+    <button class="active" data-target="terminal-section">Terminal</button>
+    <button data-target="about">About Me</button>
+    <button data-target="projects">Projects</button>
+  </nav>
 
-<script>
-  const texts = document.querySelectorAll('.glitch-text');
-  let current = 0;
-  setInterval(() => {
-    texts[current].classList.remove('active');
-    current = (current + 1) % texts.length;
-    texts[current].classList.add('active');
-  }, 3000);
+  <section id="terminal-section">
+    <div class="terminal" id="terminal">
+      <div>>> Welcome d1zz7@root - Kali Linux Terminal</div>
+      <div>>> Type a command below</div>
+      <div id="output"></div>
+      <input type="text" class="terminal-input" id="terminal-input" autofocus />
+    </div>
+  </section>
 
-  function copyDiscord(){
-    navigator.clipboard.writeText("d1zz7.p").then(()=>{
-      const n = document.getElementById('notification');
-      n.classList.remove('show');
-      void n.offsetWidth;
-      n.classList.add('show');
+  <section id="about" style="display:none;">
+    <div class="section-title">About Me</div>
+    <div class="glitch" id="about-text"></div>
+  </section>
+
+  <section id="projects" style="display:none;">
+    <div class="section-title">My Projects</div>
+    <div class="project-card">DDoS Web Flooder <br/><small>Python | Networking</small></div>
+    <div class="project-card">Discord Automation Bot <br/><small>Node.js | AIO</small></div>
+    <div class="project-card">Terminal UI Panel <br/><small>HTML/CSS/JS</small></div>
+    <div class="project-card">Website Vulnerability Scanner <br/><small>Python | Web</small></div>
+    <div class="project-card">Port Scanner <br/><small>Python | Sockets</small></div>
+    <div class="project-card">ARP Spoofer <br/><small>Python | Scapy</small></div>
+    <div style="margin-top:20px;">
+      <button class="btn" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">📂 Projects</button>
+    </div>
+  </section>
+
+  <script>
+    // Nav switching logic
+    const navButtons = document.querySelectorAll('nav button');
+    const sections = {
+      "terminal-section": document.getElementById('terminal-section'),
+      "about": document.getElementById('about'),
+      "projects": document.getElementById('projects')
+    };
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        Object.keys(sections).forEach(key => {
+          sections[key].style.display = (key === btn.dataset.target) ? 'block' : 'none';
+        });
+      });
     });
-  }
 
-  function openGithub(){
-    window.open("https://github.com/d1zz1", "_blank");
-  }
+    // Discord copy button + notification
+    const copyDiscord = () => {
+      navigator.clipboard.writeText("d1zz7.p").then(() => {
+        const notif = document.getElementById("copied-notification");
+        notif.style.display = "block";
+        setTimeout(() => (notif.style.display = "none"), 2000);
+      });
+    };
 
-  const about = document.querySelectorAll('.about-glitch span');
-  let aCur = 0;
-  setInterval(() => {
-    about[aCur].classList.remove('active');
-    aCur = (aCur + 1) % about.length;
-    about[aCur].classList.add('active');
-  }, 2000);
-</script>
+    // Terminal logic
+    const terminal = document.getElementById("terminal");
+    const output = document.getElementById("output");
+    const input = document.getElementById("terminal-input");
+
+    const responses = {
+      help: "Available commands: help, banner, cd, ls, cat, curl wttr.in, clear, whoami, date, ping, echo, uptime",
+      banner: ` ________  ___  ___  ________  ________  \n|\\   __  \\|\\  \\|\\  \\|\\   __  \\|\\   __  \\ \n\\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \n \\ \\   ____\\ \\  \\\\\\  \\ \\   __  \\ \\  \\\\\\  \\ \n  \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\ \\  \\ \\  \\\\\\  \\ \n   \\ \\__\\    \\ \\_______\\ \\__\\ \\__\\ \\_______\\ \n    \\|__|     \\|_______|\\|__|\\|__|\\|_______|`,
+      cd: "Access denied.",
+      ls: "README.md  projects/  tools/  d1zz7.p",
+      cat: "This is a restricted system.",
+      "curl wttr.in": `      Weather Report\n=======================\nLocation: HackerSpace 🌐\nTemp: 21°C  ☁️  Overcast\nWind: 6km/h\n`,
+      clear: "clear",
+      whoami: "d1zz7@root",
+      date: new Date().toString(),
+      ping: "Pong!",
+      echo: (args) => args.join(' '),
+      uptime: "System uptime: 3 days, 4 hours, 22 minutes"
+    };
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const fullCmd = input.value.trim();
+        input.value = "";
+
+        if (!fullCmd) return;
+
+        const [cmd, ...args] = fullCmd.split(" ");
+
+        if (cmd === "clear") {
+          output.innerHTML = "";
+          return;
+        }
+
+        output.innerHTML += `<div>> ${fullCmd}</div>`;
+
+        if (responses.hasOwnProperty(cmd)) {
+          const response = typeof responses[cmd] === "function" ? responses[cmd](args) : responses[cmd];
+          if (response === "clear") {
+            output.innerHTML = "";
+          } else {
+            output.innerHTML += `<div>${response}</div>`;
+          }
+        } else {
+          output.innerHTML += `<div>Command not found.</div>`;
+        }
+
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    });
+
+    // About Me animated text
+    const aboutText = [
+      "Hello",
+      "> I'm d1zz7",
+      "> My talents:",
+      "> Programming",
+      "> Ethical Hacking",
+      "> Penetration Testing",
+      "> Network Administration",
+      "> PC Scientist",
+      "> Cyber Security Analyst",
+      "> Automation Specialist"
+    ];
+
+    let aboutIndex = 0;
+    setInterval(() => {
+      document.getElementById("about-text").textContent = aboutText[aboutIndex % aboutText.length];
+      aboutIndex++;
+    }, 2000);
+  </script>
 </body>
 </html>
