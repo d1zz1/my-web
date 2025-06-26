@@ -1,294 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>d1zz7's web</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Share Tech Mono', monospace;
-      background: radial-gradient(circle at top, #222 0%, #000 100%);
-      color: #00ff9f;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d1zz7 web</title>
+    <style>
+        :root {
+            --primary: #bb86fc;
+            --primary-dark: #3700b3;
+            --secondary: #03dac6;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --error: #cf6679;
+            --on-primary: #000000;
+            --on-secondary: #000000;
+            --on-background: #ffffff;
+            --on-surface: #ffffff;
+        }
 
-    header, section {
-      text-align: center;
-      padding: 40px 20px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .glitch-banner {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #00ff9f;
-      position: relative;
-      text-align: center;
-      user-select: none;
-      animation: flicker 3s infinite alternate;
-      text-shadow:
-        0 0 5px #00ff9f,
-        0 0 10px #00ff9f,
-        -2px 0 red,
-        2px 0 blue;
-      margin-bottom: 20px;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .btn {
-      background: #000;
-      border: 1px solid #00ff9f;
-      color: #00ff9f;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: 0.3s;
-      user-select: none;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--primary);
+            margin-bottom: 2rem;
+        }
 
-    .btn:hover {
-      background: #00ff9f;
-      color: #000;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-    .copied-notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #111;
-      color: #00ff9f;
-      padding: 10px;
-      border: 1px solid #00ff9f;
-      border-radius: 5px;
-      display: none;
-      user-select: none;
-      font-weight: bold;
-      z-index: 9999;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-    .terminal {
-      background: #000;
-      color: #0f0;
-      padding: 20px;
-      width: 80%;
-      margin: 20px auto;
-      height: 300px;
-      overflow-y: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ff9f44;
-      position: relative;
-      font-size: 16px;
-      line-height: 1.4;
-      user-select: text;
-    }
+        nav a {
+            color: var(--on-background);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
 
-    input.terminal-input {
-      background: transparent;
-      border: none;
-      color: #0f0;
-      width: 100%;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 16px;
-      outline: none;
-      caret-color: #00ff9f;
-      user-select: text;
-    }
+        nav a:hover {
+            color: var(--primary);
+        }
 
-    .section-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-      user-select: none;
-    }
+        section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+        }
 
-    .project-card, .tool-card {
-      background: #111;
-      border: 1px solid #00ff9f;
-      margin: 10px auto;
-      padding: 15px;
-      width: 80%;
-      border-radius: 10px;
-      color: #00ff9f;
-      user-select: none;
-    }
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
 
-    nav {
-      width: 80%;
-      margin: 0 auto 40px auto;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      user-select: none;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-    nav button {
-      background: transparent;
-      border: 1px solid #00ff9f;
-      color: #00ff9f;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1rem;
-      transition: background 0.3s, color 0.3s;
-    }
+        .animated-text {
+            font-size: 1.5rem;
+            height: 60px;
+            margin: 0 auto 2rem;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-    nav button:hover, nav button.active {
-      background: #00ff9f;
-      color: #000;
-    }
-  </style>
+        .animated-text span {
+            position: absolute;
+            opacity: 0;
+            animation: textAnimation 10s infinite;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(3, 218, 198, 0.5);
+            white-space: nowrap;
+        }
+
+        .animated-text span:nth-child(1) { animation-delay: 0s; }
+        .animated-text span:nth-child(2) { animation-delay: 2.5s; }
+        .animated-text span:nth-child(3) { animation-delay: 5s; }
+        .animated-text span:nth-child(4) { animation-delay: 7.5s; }
+
+        @keyframes textAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            40% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: var(--on-primary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .skill-card {
+            background-color: var(--surface);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--primary);
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--on-background);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1 class="glitch-banner">| d1zz7 |</h1>
-    <div>
-      <button class="btn" onclick="copyDiscord()">💬 Discord</button>
-      <button class="btn" onclick="window.open('https://github.com/d1zz1', '_blank')">💻 GitHub</button>
+    <div class="container">
+        <header>
+            <div class="logo">d1zz7  </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About 👨‍💻</a></li>
+                    <li><a href="#skills">Skills 🛠️</a></li>
+                    <li><a href="#projects">Projects 📂</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero" id="about">
+            <h1>d1zz7</h1>
+            <div class="animated-text">
+                <span>Ethical Hacker 👨‍💻 | Gray Hat 🎩</span>
+                <span>Penetration Tester 🔓</span>
+                <span>Security Researcher 🔍</span>
+                <span>Network Specialist 🌐</span>
+            </div>
+            <p>Specializing in network security 🛡️, vulnerability assessment 🕵️‍♂️, and red team operations 🔴</p>
+            <button id="skillsBtn" class="btn">Skills 🛠️</button>
+        </section>
+
+        <section class="skills" id="skills">
+            <h2>My Skills 🛠️</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🔓 Penetration Testing</h3>
+                    <p>Comprehensive security assessments to identify and exploit vulnerabilities in systems and networks.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>👨‍💻 Ethical Hacking</h3>
+                    <p>Authorized hacking to evaluate the security of systems using the same techniques as malicious hackers.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🛡️ Network Security</h3>
+                    <p>Protecting networks from intrusions, attacks, and unauthorized access.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🔍 Vulnerability Research</h3>
+                    <p>Discovering and analyzing security vulnerabilities in software and hardware.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🕵️‍♂️ Digital Forensics</h3>
+                    <p>Investigating and analyzing digital evidence from cyber incidents and attacks.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>💼 Security Consulting</h3>
+                    <p>Providing expert advice to organizations to improve their security posture.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/d1zz1" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
     </div>
-    <div class="copied-notification" id="copied-notification">Discord username copied!</div>
-  </header>
 
-  <nav>
-    <button class="active" data-target="terminal-section">Terminal</button>
-    <button data-target="about">About Me</button>
-    <button data-target="projects">Projects</button>
-  </nav>
-
-  <section id="terminal-section">
-    <div class="terminal" id="terminal">
-      <div>>> Welcome d1zz7@root </div>
-      <div>>> Type a command below > for help type | help < </div>
-      <div id="output"></div>
-      <input type="text" class="terminal-input" id="terminal-input" autofocus />
-    </div>
-  </section>
-
-  <section id="about" style="display:none;">
-    <div class="section-title">About Me</div>
-    <div class="glitch" id="about-text"></div>
-  </section>
-
-  <section id="projects" style="display:none;">
-    <div class="section-title">My Projects</div>
-    <div class="project-card">DDoS Web Flooder <br/><small>Python | Networking</small></div>
-    <div class="project-card">Discord Automation Bot <br/><small>Node.js | AIO</small></div>
-    <div class="project-card">Terminal UI Panel <br/><small>HTML/CSS/JS</small></div>
-    <div class="project-card">Website Vulnerability Scanner <br/><small>Python | Web</small></div>
-    <div class="project-card">Port Scanner <br/><small>Python | Sockets</small></div>
-    <div class="project-card">ARP Spoofer <br/><small>Python | Scapy</small></div>
-    <div style="margin-top:20px;">
-      <button class="btn" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">📂 Projects</button>
-    </div>
-  </section>
-
-  <script>
-    // Nav switching logic
-    const navButtons = document.querySelectorAll('nav button');
-    const sections = {
-      "terminal-section": document.getElementById('terminal-section'),
-      "about": document.getElementById('about'),
-      "projects": document.getElementById('projects')
-    };
-
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        Object.keys(sections).forEach(key => {
-          sections[key].style.display = (key === btn.dataset.target) ? 'block' : 'none';
+    <script>
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
-      });
-    });
 
-    // Discord copy button + notification
-    const copyDiscord = () => {
-      navigator.clipboard.writeText("d1zz7.p").then(() => {
-        const notif = document.getElementById("copied-notification");
-        notif.style.display = "block";
-        setTimeout(() => (notif.style.display = "none"), 2000);
-      });
-    };
+        // Skills button functionality
+        document.getElementById('skillsBtn').addEventListener('click', function() {
+            document.getElementById('skills').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Add visual feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
 
-    // Terminal logic
-    const terminal = document.getElementById("terminal");
-    const output = document.getElementById("output");
-    const input = document.getElementById("terminal-input");
+        // Animation for skill cards when they come into view
+        const skillCards = document.querySelectorAll('.skill-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-    const responses = {
-      help: "Available commands: help, banner, cd, ls, cat, curl wttr.in, clear, whoami, date, ping, echo, uptime",
-      banner: ` ________  ___  ___  ________  ________  \n|\\   __  \\|\\  \\|\\  \\|\\   __  \\|\\   __  \\ \n\\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \n \\ \\   ____\\ \\  \\\\\\  \\ \\   __  \\ \\  \\\\\\  \\ \n  \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\ \\  \\ \\  \\\\\\  \\ \n   \\ \\__\\    \\ \\_______\\ \\__\\ \\__\\ \\_______\\ \n    \\|__|     \\|_______|\\|__|\\|__|\\|_______|`,
-      cd: "Access denied.",
-      ls: "README.md  projects/  tools/  d1zz7.p",
-      cat: "This is a restricted system.",
-      "curl wttr.in": `      Weather Report\n=======================\nLocation: HackerSpace 🌐\nTemp: 21°C  ☁️  Overcast\nWind: 6km/h\n`,
-      clear: "clear",
-      whoami: "d1zz7@root",
-      date: new Date().toString(),
-      ping: "Pong!",
-      echo: (args) => args.join(' '),
-      uptime: "System uptime: 3 days, 4 hours, 22 minutes"
-    };
-
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const fullCmd = input.value.trim();
-        input.value = "";
-
-        if (!fullCmd) return;
-
-        const [cmd, ...args] = fullCmd.split(" ");
-
-        if (cmd === "clear") {
-          output.innerHTML = "";
-          return;
-        }
-
-        output.innerHTML += `<div>> ${fullCmd}</div>`;
-
-        if (responses.hasOwnProperty(cmd)) {
-          const response = typeof responses[cmd] === "function" ? responses[cmd](args) : responses[cmd];
-          if (response === "clear") {
-            output.innerHTML = "";
-          } else {
-            output.innerHTML += `<div>${response}</div>`;
-          }
-        } else {
-          output.innerHTML += `<div>Command not found.</div>`;
-        }
-
-        terminal.scrollTop = terminal.scrollHeight;
-      }
-    });
-
-    // About Me animated text
-    const aboutText = [
-      "Hello",
-      "> I'm d1zz7",
-      "> My talents:",
-      "> Programming",
-      "> Ethical Hacking",
-      "> Penetration Testing",
-      "> Network Administration",
-      "> PC Scientist",
-      "> Cyber Security Analyst",
-      "> Automation Specialist"
-    ];
-
-    let aboutIndex = 0;
-    setInterval(() => {
-      document.getElementById("about-text").textContent = aboutText[aboutIndex % aboutText.length];
-      aboutIndex++;
-    }, 2000);
-  </script>
+        skillCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
